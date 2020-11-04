@@ -1,0 +1,19 @@
+@import "./_searchbar";
+@import "./_header";
+@import "./_sidebar";
+.wrapper{
+    display: flex;
+    width: 100%;
+}
+.main-container{
+    display: block;
+    margin-left: $sidebar-width;
+    width: calc(100% - #{$sidebar-width});
+    float: left;
+    transition: all 0.3s ease; 
+    position: relative; 
+    overflow: hidden;
+}
+.main{
+    margin-top: $header-height;
+}
