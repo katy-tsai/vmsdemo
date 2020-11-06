@@ -1,0 +1,40 @@
+
+$card-spacer-x:            1.25rem;
+$card-spacer-y:            .75rem;
+$card-border-width:        .0625rem;
+$card-border-color:        #e5e5e5;
+
+$card-cap-bg: #f5f5f5;
+.card-div{
+  padding: 20px;
+}
+.card {
+  position: relative;
+  margin-bottom: $card-spacer-y;
+  border: $card-border-width solid $card-border-color;
+  background: #fff;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  &.sub>.card-title{
+    background-color: #CCCCCC;
+    color:#000;
+  }
+}
+.card_buttons{
+ display: flex;
+ flex-direction: row;
+ justify-content: flex-end;
+ 
+
+}
+
+.card-title {
+  margin: 0;
+  margin-bottom: $card-spacer-y;
+  padding: 10px;
+  text-align: center;
+  background-color: #049be5;
+  color:#fff;
+  
+  
+}
+
