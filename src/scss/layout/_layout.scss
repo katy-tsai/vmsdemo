@@ -1,29 +1,31 @@
-@import "./_searchbar";
 @import "./_header";
 @import "./_sidebar";
 body{
     background-color: $main-container-backgroud-color;    
 }
-*{
-    box-sizing: border-box;
-}
+
 .wrapper{
     display: flex;
     width: 100%;
 }
+.left-container{
+     width: $sidebar-width;
+}
 .main-container{
-    display: block;
-    margin-left: $sidebar-width;
-    width: calc(100% - #{$sidebar-width});
-    float: left;
+    display: flex;
+    flex-direction: column;
+    // margin-left: $sidebar-width;
+    // width: calc(100% - #{$sidebar-width});
+   // float: left;
     transition: all 0.3s ease; 
     position: relative; 
-    overflow: hidden;
+    flex:1;
 }
 .main{
     margin-top: $header-height;
+    width: 100%;
     .view-div{
-        padding: 15px;
+        padding: 10px;
         .title{
             font-size: 1.1rem;
             font-weight: bolder;

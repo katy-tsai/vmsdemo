@@ -1,9 +1,10 @@
 import React from 'react';
-import Searchbar from './Searchbar';
+import Searchbar from '../searchbar/Searchbar';
 const Header = (props) => {
     return (
         <div className="header">
-            <Searchbar />
+             <Searchbar placeholder="Channel name,Event Name..."/>
+            
         </div>
     );
 };

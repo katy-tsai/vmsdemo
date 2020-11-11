@@ -10,7 +10,6 @@ const Sidebar = (props) => {
     const [toggelMenu, setToogelMeue] = useState({ dashboard: false, video: false, devices: false });
 
     const toggleClick = (name) => {
-        console.log(name);
         setToogelMeue({ ...toggelMenu, [name]: !toggelMenu[name] });
     }
 

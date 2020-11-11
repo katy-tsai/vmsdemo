@@ -1,10 +1,10 @@
 import React from 'react';
 
-const Searchbar = (props) => {
+const Searchbar = ({placeholder}) => {
     return (
         <div className="search-div">
             <div className="input-wrapper">
-                <input type="text" placeholder="Channel name,Event Name..." />
+                <input type="text" placeholder={placeholder} />
                 <button className="search-btn"></button>
             </div>
 

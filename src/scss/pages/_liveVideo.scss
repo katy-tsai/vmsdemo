@@ -1,0 +1,25 @@
+.view_tabs{
+    max-height: 200px;
+    margin-bottom: 50px;
+}
+
+.live_viewType_row{
+    display: flex;
+    justify-content: flex-end;
+    padding: 5px;
+}
+
+.live_view{
+    width: 100%;
+    height: calc(100vh - 220px);
+    display: block;
+}
+
+.channel-btns-div{
+    padding: 20px;
+    div.active{
+       background-color: #049be5;
+       color: #fff;
+        // margin-right: -1px;
+    }
+}

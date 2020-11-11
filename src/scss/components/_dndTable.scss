@@ -1,0 +1,16 @@
+.dnd_div{
+    display: flex;
+    flex-direction: row;
+    .dnd_table_div,.dragItem_container{
+        display: block;
+    }
+    .dragItem_container{
+        .dragItem_title{
+            text-align: center;
+        }
+        .dragItem_content{
+            display: flex;
+            flex-direction: column;
+        }
+    }
+}

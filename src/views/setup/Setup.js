@@ -1,7 +1,7 @@
 import React from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import View from '../../components/layout/View';
-import UserSetup from '../../containers/UserSetup';
+import UserSetup from './_Setup/UserSetup';
 
 const Setup = () => {
 

@@ -1,38 +1,34 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import UserForm from '../components/form/UserForm';
-import * as types from '../store/actionTypes';
-
+import UserForm from '../../../components/form/UserForm';
+import { getUsersInfo, addSubUser, saveSubUser, saveUser } from '../../../store/action/users.action';
+const userId = 'A402C9BD97C74BD530';
 
 const UserSetup = () => {
     const userInfo = useSelector(state => state.user);
-    console.log(userInfo);
-
     const { subUsers, loginInfo } = userInfo;
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        function fetchData() {
+            dispatch(getUsersInfo(userId));
+        }
+        fetchData();
+    }, [dispatch]);
+
+    useEffect(() => {
+
+    }, [loginInfo, subUsers]);
     const addSubUserHandler = () => {
-        dispatch({
-            type: types.SETUP_ADD_SUBUSER
-        });
+        dispatch(addSubUser());
     }
     const saveUSubUserHandler = (user, index) => {
-        dispatch({
-            type: types.SETUP_SAVE_SUBUSER,
-            payload: {
-                user,
-                index
-            }
-        });
+        dispatch(saveSubUser(user, index));
     }
     const saveUserHandler = (user) => {
-        dispatch({
-            type: types.SETUP_SAVE_MAINUSER,
-            payload: {
-                user
-            }
-        });
+        dispatch(saveUser(user));
     }
-
+    console.log('subUsers=', subUsers)
     return (
         <>
             <UserForm data={loginInfo} isSub={false} addSubUser={addSubUserHandler} saveUser={saveUserHandler} />

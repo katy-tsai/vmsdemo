@@ -1,14 +1,14 @@
 import * as types from '../actionTypes';
 
 const initState = {
-    deviceList: [],
+    groupList: [],
 };
 
 
 
 const reducer = (state = initState, action) => {
     switch (action.type) {
-        case types.DEVICES_QUERY: {
+        case types.GROUPS_QUERY: {
             return { ...action.payload };
         }
         default:

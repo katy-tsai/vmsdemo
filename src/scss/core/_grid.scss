@@ -26,6 +26,7 @@ $grid-sum: 12;
       flex: 0 0 (100% * ($var / $grid-sum));
       padding-left: 0px;
       padding-right: 0px;
+      box-sizing: border-box;
     }
   }
 

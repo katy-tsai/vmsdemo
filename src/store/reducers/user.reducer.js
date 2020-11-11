@@ -1,36 +1,34 @@
 import * as types from '../actionTypes';
+import { uuid } from '../../utils/dataUtils';
 const initState = {
     loginInfo: {
-        userName: '123456',
-        displayName: 'TUTK 管理者',
-        cellphone: {
-            areaCode: '+886',
-            no: '9123456789'
+        "id": 1,
+        "userId": "A402C9BD97C74BD530",
+        "userName": "mainclient",
+        "displayName": "TUTK 管理者",
+        "cellphone": {
+            "areaCode": "+886",
+            "no": "9123456789"
         },
-        lineID: '@12981kd',
-        email: 'tutkadmin@tutk.com',
-        pwd: '123456'
+        "lineID": "@12981kd",
+        "email": "tutkadmin@tutk.com",
+        "pwd": "123456",
+        "role": "client.main",
+        "mainUser": "",
+        "vender": ""
     },
-    subUsers: [
-        {
-            userName: 'Genreal',
-            displayName: '總務室',
-            cellphone: {
-                areaCode: '+886',
-                no: '912999999'
-            },
-            lineID: '@geno1lsa1',
-            email: 'tutkgeneral@tutk.com',
-            pwd: ''
-        }
-    ]
+    subUsers: []
 };
 
 
 const reducer = (state = initState, action) => {
     switch (action.type) {
+        case types.SETUP_INIT_USERDATA: {
+            return { ...action.payload };
+        }
         case types.SETUP_ADD_SUBUSER: {
             const initSubUser = {
+                userId: uuid(),
                 userName: '',
                 displayName: '',
                 cellphone: {
@@ -39,7 +37,10 @@ const reducer = (state = initState, action) => {
                 },
                 lineID: '',
                 email: '',
-                pwd: ''
+                pwd: '',
+                role: "client.main",
+                mainUser: state.loginInfo.userId,
+                vender: state.loginInfo.vender
             }
             const subUsers = [...state.subUsers, initSubUser];
             return { ...state, subUsers };
@@ -47,7 +48,7 @@ const reducer = (state = initState, action) => {
 
         case types.SETUP_SAVE_SUBUSER: {
             state.subUsers[action.payload.index] = action.payload.user;
-            return state;
+            return { ...state };
         }
 
         case types.SETUP_SAVE_MAINUSER: {

@@ -4,10 +4,13 @@ import Sidebar from '../sidebar/Sidebar';
 const Layout = (props) => {
     return (
         <div className="wrapper">
-            <Sidebar />
+            <div className="left-container">
+               <Sidebar />
+            </div>           
             <div className="main-container">
-                <Header />
+                
                 <div className="main">
+                <Header />
                     {props.children}
                 </div>
             </div>

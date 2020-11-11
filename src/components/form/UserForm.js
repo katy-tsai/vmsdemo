@@ -38,12 +38,12 @@ const UserForm = ({ data, isSub, addSubUser, saveUser, index }) => {
                 </div>
                 <div className="row">
                     <label className="col-3">{isSub ? '重設密碼:' : '原密碼:'}</label>
-                    <input className="col-3" name="pwd" type="password" ref={register} />
+                    <input className="col-3" name="pwd" type="password" ref={register} autoComplete="false" />
                     <label className="col-3">{isSub ? '重複新密碼:' : '新密碼:'}</label>
-                    {isSub ? (<input className="col-3" name="checkPwd" type="password" placeholder="重複新密碼" ref={register} />) :
+                    {isSub ? (<input className="col-3" name="checkPwd" type="password" autoComplete="false" placeholder="重複新密碼" ref={register} />) :
                         (<div className="col-3 ">
-                            <input className="col-6  gutter-width mr-30" name="newPwd" type="password" ref={register} />
-                            <input className="col-6 gutter-width" name="checkPwd" type="password" placeholder="重複新密碼" ref={register} />
+                            <input className="col-6  gutter-width mr-30" name="newPwd" autoComplete="false" type="password" ref={register} />
+                            <input className="col-6 gutter-width" name="checkPwd" autoComplete="false" type="password" placeholder="重複新密碼" ref={register} />
                         </div>)
                     }
                 </div>
