@@ -1,25 +1,29 @@
 button{  
+    border: none;
+    outline:none;
     &:hover{
+       
         cursor: pointer;
     }
-    &:active{
+    &:active,&:focus{
         border: none;
         box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     }
 
 }
 
-.main_btn{
+.main_btn{  
     border:none;
     box-shadow: 0 3px 5px 0 rgba(0,0,0,0.2);
-    min-width: 150px;
     padding: 5px 15px;
-    margin: 10px;
+    min-width: 150px;  
     font-size: .9rem;
     line-height: 20px;
     color: #fff;
     background:$main-color;
 }
+
+
 @mixin flex_items_cloumn($i) {
    flex: 0 0 (100/$i/100)*100%;
   }

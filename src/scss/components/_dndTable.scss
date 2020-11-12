@@ -1,16 +1,74 @@
 .dnd_div{
     display: flex;
     flex-direction: row;
+    .no-data-text{
+        min-height: 500px;
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        font-size: 2rem;
+        font-weight: bolder;
+        color: #ddd;
+    }
+    .table-row{
+        min-height: 50px;
+    }
     .dnd_table_div,.dragItem_container{
         display: block;
     }
     .dragItem_container{
         .dragItem_title{
             text-align: center;
+            padding: 5px;
         }
         .dragItem_content{
-            display: flex;
-            flex-direction: column;
+            // display: flex;
+            // flex-direction: row;
+            // flex-wrap: wrap;
+            min-height: 500px;
+            // border: 1px solid #000;
+            background-color: #fff;
+            box-shadow: inset 0 -2px 0 rgba(255,255,250,0.6),
+            inset 0 -3px 0 rgba(0,0,0,0.1);
+            padding: 2px;
+           
+        }
+        .drag_item{
+            cursor: pointer;
+        }
+       
+        
+    }
+    
+    .drag_item{
+        display: inline-flex;
+       // background-color: rgba(58, 56, 56, 0.9);
+        color:#fff;
+        padding: 5px 10px !important;
+        margin: 5px !important;
+        border-radius: 10px;
+        flex-grow: 0;
+        font-size: .9rem;
+        // min-width: 90px;
+    }
+    .drag_item_channels{
+        background-color: rgba(58, 56, 56, 0.9);
+    }
+    .drag_item_accounts{
+        background-color: rgba(2, 0, 115, 0.9);
+    }
+    .drop_content{
+        display: block;
+        margin: 5px !important;
+        min-height: 50px;
+        &.active{
+            height: 50px;;
         }
     }
+    .tr_item_1,.tr_item_2{
+         flex:2 !important;
+        // width: 50%;
+    }
+    
 }

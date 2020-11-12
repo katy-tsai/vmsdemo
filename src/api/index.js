@@ -34,3 +34,8 @@ export const getGroupsByUser = async (userId) => {
     const response = await axios.get(`/groups?userId=${userId}`);
     return response;
 }
+
+export const getGroupByCondition = async (args) => {
+    const response = await axios.get(`/groups`, { params: { ...args } });
+    return response;
+}

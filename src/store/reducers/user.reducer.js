@@ -14,10 +14,11 @@ const initState = {
         "email": "tutkadmin@tutk.com",
         "pwd": "123456",
         "role": "client.main",
-        "mainUser": "",
+        "mainUser": "A402C9BD97C74BD530",
         "vender": ""
     },
-    subUsers: []
+    subUsers: [],
+    userList: []
 };
 
 
@@ -38,7 +39,7 @@ const reducer = (state = initState, action) => {
                 lineID: '',
                 email: '',
                 pwd: '',
-                role: "client.main",
+                role: "client.sub",
                 mainUser: state.loginInfo.userId,
                 vender: state.loginInfo.vender
             }
@@ -55,7 +56,9 @@ const reducer = (state = initState, action) => {
             const loginInfo = { loginInfo: action.payload.user };
             return { ...state, loginInfo };
         }
-
+        case types.USERS_QYERY: {
+            return { ...state, userList: action.payload.userList };
+        }
         default:
             return state;
     }

@@ -22,11 +22,11 @@ export const dataSetToArray = (data, array, viewType, viewNum = 0) => {
   if (viewType === 8) {
     array.splice(0, 0, array[0]);
   }
-  const channelList = data.reduce((pre, cur) => {
+  const videoChannels = data.reduce((pre, cur) => {
     const activeObj = _.find(array, function (o) { return o.channelId === cur.channelId; });
     return [...pre, { ...cur, active: activeObj ? true : false }];
   }, []);
-  return { playList: array, channelList };
+  return { playList: array, videoChannels };
 }
 
 export const devicesJoinChannls = (devices, channels) => {

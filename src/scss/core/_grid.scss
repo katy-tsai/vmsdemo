@@ -18,6 +18,9 @@ $grid-sum: 12;
     padding: 5px 0;
   }
   
+  .row-right{
+    justify-content: flex-end;
+  }
   
   @for $var from 1 through $grid-sum {
     .col-#{$var} {

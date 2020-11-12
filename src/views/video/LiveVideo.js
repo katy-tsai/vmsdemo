@@ -8,7 +8,7 @@ import { getLiveView } from '../../store/action/channels.action';
 
 const LiveVideo = () => {
     //const [viewNum,setViewNum]=useState(0); // TODO : changePage
-    const { channelList, playList, viewType } = useSelector(state => state.channels);
+    const { videoChannels, playList, viewType } = useSelector(state => state.channels);
     const { loginInfo } = useSelector(state => state.user);
     const { userId } = loginInfo;
     const dispatch = useDispatch();
@@ -37,7 +37,7 @@ const LiveVideo = () => {
                         <div className="channel-btns-div">
                             <ButtonGroup
                                 rowNum={7}
-                                btns={channelList}
+                                btns={videoChannels}
                                 label="channelName"
                                 clickFun={channelBtnsChangeHandler} />
                         </div>

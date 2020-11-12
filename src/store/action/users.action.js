@@ -1,12 +1,28 @@
 import * as types from '../actionTypes';
 import { getUsersByCondition, getUsersByUser, insertUsers, updateUsers } from '../../api';
 
-
+export function getUsers(userId) {
+    return async (dispatch) => {
+        const userList = await getUsersByCondition({
+            mainUser: userId,
+        });
+        return dispatch(getUsersSuccess(userList));
+    };
+}
+export function getUsersSuccess(userList) {
+    return {
+        type: types.USERS_QYERY,
+        payload: {
+            userList
+        }
+    }
+}
 export function getUsersInfo(userId) {
     return async (dispatch) => {
         const loginInfo = await getUsersByUser(userId);
         const subUsers = await getUsersByCondition({
-            mainUser: userId
+            mainUser: userId,
+            role: 'client.sub'
         });
         return dispatch(getUserInfo(loginInfo, subUsers));
     };
@@ -50,7 +66,6 @@ export function saveSubUser(user, index) {
 
     return async (dispatch, getState) => {
         const state = getState();
-        console.log(state)
         user = { ...state.user.subUsers[index], ...user };
         if (user.id) {
             const updateSubuser = await updateUsers(user);

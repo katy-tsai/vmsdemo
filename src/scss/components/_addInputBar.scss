@@ -1,0 +1,30 @@
+.add-input-div{
+  width: 100%;
+  margin-right: 30px;
+  .input-wrapper{
+      width: 100%;
+      position: relative;
+      input{
+          width: 100%;
+          line-height: 15px;
+          margin:  0;
+          padding: 2px;
+          outline: 0;
+          border: 1px solid $main-color;
+      }   
+      button{
+          height: 28px;
+          width: 35px;
+          position: absolute;
+          right: -6px;
+          top:0;
+          margin: 0;
+          border: 1px solid $main-color;
+          color:$main-color;
+          &:hover{
+              cursor: pointer;
+          }
+      }
+  }
+
+}

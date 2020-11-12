@@ -81,6 +81,9 @@ const StatesDevices = () => {
                     </Tbody>
 
                 </Table>
+                <div className="col-12 row row-right pr-0">
+                    <button className="main_btn col-3 my-5 " type="button" >新增裝置</button>
+                </div>
             </div>
 
         </View>

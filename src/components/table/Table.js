@@ -20,7 +20,7 @@ export const Thead = ({ children }) => {
             {
                 children.map((child, index) => {
                     return (
-                        <li className={["table-column", `th_item_${index}`].join(" ")} key={`th_${index}`} >
+                        <li className={["table-column", `tr_item_${index}`, child.props.className].join(" ")} key={`th_${index}`}  {...child.props} >
                             {child}
                         </li>
                     )
@@ -37,7 +37,7 @@ export const Trow = ({ children }) => {
             {
                 children.map((child, index) => {
                     return (
-                        <li className={["table-column", `tr_item_${index}`].join(" ")} key={`th_${index}`} >
+                        <li className={["table-column", `tr_item_${index}`, child.props.className].join(" ")} key={`th_${index}`} {...child.props} >
                             {child}
                         </li>
                     )

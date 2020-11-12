@@ -23,12 +23,33 @@ const UserSetup = () => {
         dispatch(addSubUser());
     }
     const saveUSubUserHandler = (user, index) => {
+        user = {
+            ...user,
+            id: subUsers[index].id,
+            userId: subUsers[index].userId,
+            userName: user.userName || subUsers[index].userName,
+            pwd: user.pwd || subUsers[index].pwd,
+            role: subUsers[index].role,
+            mainUser: subUsers[index].mainUser,
+            vender: subUsers[index].vender
+        }
         dispatch(saveSubUser(user, index));
     }
     const saveUserHandler = (user) => {
+        user = {
+            ...user,
+            id: loginInfo.id,
+            userId: loginInfo.userId,
+            userName: user.userName || loginInfo.userName,
+            pwd: user.pwd || loginInfo.pwd,
+            role: loginInfo.role,
+            mainUser: loginInfo.mainUser,
+            vender: loginInfo.vender
+        }
+
         dispatch(saveUser(user));
     }
-    console.log('subUsers=', subUsers)
+    console.log(subUsers);
     return (
         <>
             <UserForm data={loginInfo} isSub={false} addSubUser={addSubUserHandler} saveUser={saveUserHandler} />

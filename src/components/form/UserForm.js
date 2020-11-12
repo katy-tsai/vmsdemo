@@ -48,8 +48,8 @@ const UserForm = ({ data, isSub, addSubUser, saveUser, index }) => {
                     }
                 </div>
                 <div className="card_buttons">
-                    {!isSub && <button className="main_btn" type="button" onClick={addSubUser}>新增子帳號</button>}
-                    <button className="main_btn" type="submit" >保存</button>
+                    {!isSub && <button className="main_btn mx-10 my-10" type="button" onClick={addSubUser}>新增子帳號</button>}
+                    <button className="main_btn mx-10 my-10" type="submit" >保存</button>
                 </div>
             </form>
         </Card>

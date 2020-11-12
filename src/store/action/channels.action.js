@@ -12,16 +12,33 @@ export const getLiveView = (userId, viewType, num) => {
 export const getLiveViewInit = (channelData, viewType, num) => {
     const defaultVidoList = Array(viewType).fill({ "channelName": "", "deviceUID": "", "channelId": "", "states": "" });
 
-    const { playList, channelList } = dataSetToArray(channelData, defaultVidoList, viewType, num);
+    const { playList, videoChannels } = dataSetToArray(channelData, defaultVidoList, viewType, num);
     return {
         type: types.VIDEO_LIVE_INIT,
         payload: {
-            channelList,
+            videoChannels,
             playList,
             viewType
         }
     }
 }
 export const changeView = (viewType) => {
+
+}
+
+export const getChannelList = (userId) => {
+    return async (dispatch) => {
+        const channelList = await getChannelsByUser(userId);
+        return dispatch(getChannelListSuccess(channelList));
+    };
+}
+
+export const getChannelListSuccess = (channelList) => {
+    return {
+        type: types.CHANNELS_QYERY,
+        payload: {
+            channelList
+        }
+    }
 
 }
