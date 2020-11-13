@@ -39,3 +39,23 @@ export const getGroupByCondition = async (args) => {
     const response = await axios.get(`/groups`, { params: { ...args } });
     return response;
 }
+
+export const addMulitpleGroupItems = async (addGroupItems) => {
+    const response = await axios.post('/api/groups/multipleAdd', { addGroupItems });
+    return response;
+}
+
+export const deleteMulitpleGroupItems = async (deleteGroupItems) => {
+    const response = await axios.post('/api/groups/multipleDelete', { deleteGroupItems });
+    return response;
+}
+
+export const deleteGroup = async (group) => {
+    if (group.id) {
+        const response = await axios.delete(`/api/groups/${group.id}`);
+        return response;
+    } else {
+        return;
+    }
+
+}

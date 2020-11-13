@@ -1,6 +1,25 @@
 .dnd_div{
     display: flex;
     flex-direction: row;
+    .table-column{
+        padding:0 !important;  
+    }
+
+    .tr_item_0 {
+      
+        span{
+            font-size: 1rem;
+            position: relative;
+            padding-left: 25px;
+            span{
+                position: absolute;
+                top:1px;
+                left: -20px;
+                color: $red;
+                cursor: pointer;
+            }
+        }
+    }
     .no-data-text{
         min-height: 500px;
         display: flex;
@@ -18,6 +37,7 @@
         display: block;
     }
     .dragItem_container{
+        margin-top: -35px;
         .dragItem_title{
             text-align: center;
             padding: 5px;
@@ -47,10 +67,37 @@
         color:#fff;
         padding: 5px 10px !important;
         margin: 5px !important;
-        border-radius: 10px;
+        line-height: 25px !important;
+        border-radius: 5px;
         flex-grow: 0;
         font-size: .9rem;
         // min-width: 90px;
+        position: relative;
+        span{
+            position: absolute;
+            top:-13px;
+            right: -18px;
+            width: 25px;
+            height: 24px;
+            background-color: #eee;
+            opacity: 0.8;
+            border-radius: 50%;
+            border: 1px solid $main-color;
+            position: relative;
+            cursor: pointer;
+            &::after{
+                content: "x";
+                line-height: 20px;
+                font-size: 1.3rem;
+                color: $main-color;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%,-50%);
+            }
+        }
+        
+       
     }
     .drag_item_channels{
         background-color: rgba(58, 56, 56, 0.9);
@@ -63,7 +110,7 @@
         margin: 5px !important;
         min-height: 50px;
         &.active{
-            height: 50px;;
+            cursor: pointer;
         }
     }
     .tr_item_1,.tr_item_2{

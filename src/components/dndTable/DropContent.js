@@ -10,9 +10,10 @@ const DropContent = ({ accept, lastDroppedItem, onDrop, children }) => {
     }),
   });
   const isActive = isOver && canDrop;
+  const height = children.length > 0 ? (children.length + 1) * 35 : 70;
 
   return (
-    <div ref={drop} className={["drop_content", isActive ? 'active' : ''].join(" ")} style={isActive ? { height: `${(children.length + 1) * 35}px` } : {}}>
+    <div ref={drop} className={["drop_content", isActive ? 'active' : ''].join(" ")} style={isActive ? { height: `${height}px` } : {}}>
       {children}
       {JSON.stringify(lastDroppedItem)}
     </div>

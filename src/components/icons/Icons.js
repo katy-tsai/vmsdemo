@@ -4,6 +4,7 @@ import { FaRegFileVideo } from 'react-icons/fa';
 import { FiHardDrive } from 'react-icons/fi';
 import { BsBell } from 'react-icons/bs';
 import { GoDiffAdded } from 'react-icons/go';
+import { RiDeleteBin5Line } from 'react-icons/ri';
 import SetupSvg from '../../scss/img/setup.svg';
 export const ChartIcon = (props) => (
     <i className="icons">
@@ -38,5 +39,11 @@ export const BellIcon = (props) => (
 export const AddIcon = (props) => (
     <i className="icons">
         <GoDiffAdded {...props} />
+    </i>
+)
+
+export const DeleteIcon = (props) => (
+    <i className="icons" >
+        <RiDeleteBin5Line {...props} />
     </i>
 )

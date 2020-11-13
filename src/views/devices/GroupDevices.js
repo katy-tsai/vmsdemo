@@ -5,7 +5,7 @@ import DndGroupTable from '../../components/dndTable/DndGroupTable';
 import DndContainer from '../../components/dndTable/DndContainer';
 import DragItemList from '../../components/dndTable/DragItemList';
 import AddInputbar from '../../components/addInputbar/AddInputbar';
-import { getGroups, addGroup, dropGroupData } from '../../store/action/groups.action';
+import { getGroups, addGroup, dropGroupData, removeGroupItem, deletGroup } from '../../store/action/groups.action';
 import { getChannelList } from '../../store/action/channels.action';
 import { getUsers } from '../../store//action/users.action';
 import { isExist } from '../../utils/dataUtils';
@@ -30,26 +30,29 @@ const GroupDevices = () => {
     useEffect(() => {
 
     }, [groupData]);
+
     const addNewGroup = (name) => {
         if (name) {
             dispatch(addGroup(name, userId));
         } else {
             alert('Please Enter Group Name')
         }
-
     }
 
     const handleDrop = useCallback((groupIndex, item, type) => {
         if (!isExist(groupData[groupIndex][type], 'id', item.id)) {
-            let editGroupData = { ...groupData[groupIndex], [type]: [...groupData[groupIndex][type], item] }
-            groupData[groupIndex] = editGroupData;
-            dispatch(dropGroupData(groupData));
+            dispatch(dropGroupData(groupIndex, item, type));
         } else {
             alert('已設定')
         }
-
-        // setGroupData(groupData);
     }, [dispatch, groupData]);
+
+    const handleRemove = (groupId, id, type) => {
+        dispatch(removeGroupItem(groupId, id, type));
+    };
+    const handleRemoveRow = (group) => {
+        dispatch(deletGroup(group));
+    }
 
     return (
         <View title="裝置管理 Devices - 群組設定 Group">
@@ -60,17 +63,19 @@ const GroupDevices = () => {
             </div>
             <DndContainer>
                 <DndGroupTable
-                    className="col-6"
+                    className="col-sm-6 col-8"
                     columns={columns}
                     data={groupData}
                     handleDrop={handleDrop}
+                    handleRemove={handleRemove}
+                    handleRemoveRow={handleRemoveRow}
                 />
-                <DragItemList title="頻道列表" data={channelList} className="col-3" nameLabel="channelName" type="channels" />
-                <DragItemList title="帳號列表" data={userList} className="col-3" nameLabel={["userName", "displayName"]} type="accounts" />
+                <DragItemList title="帳號列表" data={userList} className="col-sm-3 col-2" nameLabel={["userName", "displayName"]} type="accounts" />
+                <DragItemList title="頻道列表" data={channelList} className="col-sm-3 col-2" nameLabel="channelName" type="channels" />
             </DndContainer>
-            <div className="col-6 row row-right">
+            {/* <div className="col-6 row row-right">
                 <button className="main_btn col-3 my-5" type="button" >保存</button>
-            </div>
+            </div> */}
         </View>
     );
 };

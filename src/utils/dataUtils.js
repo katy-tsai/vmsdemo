@@ -35,8 +35,7 @@ export const devicesJoinChannls = (devices, channels) => {
     cur['channels'] = selectByKey(channels, 'deviceUID', cur.udid);
     return [...pre, cur];
   }, [])
-  console.log(devices)
-  console.log(result);
+
   return result;
 }
 export const channelsJoinUserMember = (channels, groups) => {
@@ -62,11 +61,15 @@ export const devicesGroupUser = (devices, groups) => {
 }
 
 export const groupsJoinUserChannel = (groups, users, channels) => {
-  let new_groups = groups.slice();
-  return new_groups.reduce((pre, cur) => {
+
+  return groups.reduce((pre, cur) => {
     let index = pre.findIndex(p => p.groupName === cur.groupName);
+
     if (index >= 0) {
       const isUserIdExist = isExist(pre[index].accounts, 'userId', cur.account);
+      console.log(pre[index].accounts);
+      console.log(cur.account);
+      console.log(isUserIdExist);
       if (!isUserIdExist) {
         pre[index] = { ...pre[index], accounts: [...pre[index].accounts, ...selectByKey(users, 'userId', cur.account)] }
       }
@@ -92,4 +95,46 @@ export const isExist = (array, key, value) => {
 export const selectByKey = (array, key, value) => {
   let new_array = array.slice();
   return new_array.filter(o => o[key] === value);
+}
+
+export const groupAddItems = (dropItem, type, editGroupData) => {
+  let addItems = [];
+  if (type === 'accounts') {
+    addItems = editGroupData.channels.reduce((pre, cur) => {
+      pre = [...pre, {
+        groupName: editGroupData.groupName,
+        groupId: editGroupData.groupId,
+        userId: editGroupData.userId,
+        channelId: cur.channelId,
+        account: dropItem.userId,
+        type: "custom"
+      }]
+      return pre;
+    }, [])
+  }
+  if (type === 'channels') {
+    addItems = editGroupData.accounts.reduce((pre, cur) => {
+      pre = [...pre, {
+        groupName: editGroupData.groupName,
+        groupId: editGroupData.groupId,
+        userId: editGroupData.userId,
+        channelId: dropItem.channelId,
+        account: cur.userId,
+        type: "custom"
+      }]
+      return pre;
+    }, [])
+  }
+  return addItems;
+}
+
+export const removeGroups = (groups, groupId, id, type) => {
+  let idLable = type === 'accounts' ? 'account' : 'channelId';
+  const removeItems = groups.reduce((pre, cur) => {
+    if (cur.groupId === groupId && cur[idLable] === id) {
+      pre = [...pre, cur];
+    }
+    return pre;
+  }, []);
+  return removeItems;
 }

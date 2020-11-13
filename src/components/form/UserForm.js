@@ -36,7 +36,7 @@ const UserForm = ({ data, isSub, addSubUser, saveUser, index }) => {
                     <label className="col-3">EMAIL:</label>
                     <input className="col-9" name="email" type="text" ref={register({ required: true })} />
                 </div>
-                <div className="row">
+                {/* <div className="row">
                     <label className="col-3">{isSub ? '重設密碼:' : '原密碼:'}</label>
                     <input className="col-3" name="pwd" type="password" ref={register} autoComplete="false" />
                     <label className="col-3">{isSub ? '重複新密碼:' : '新密碼:'}</label>
@@ -46,7 +46,7 @@ const UserForm = ({ data, isSub, addSubUser, saveUser, index }) => {
                             <input className="col-6 gutter-width" name="checkPwd" autoComplete="false" type="password" placeholder="重複新密碼" ref={register} />
                         </div>)
                     }
-                </div>
+                </div> */}
                 <div className="card_buttons">
                     {!isSub && <button className="main_btn mx-10 my-10" type="button" onClick={addSubUser}>新增子帳號</button>}
                     <button className="main_btn mx-10 my-10" type="submit" >保存</button>

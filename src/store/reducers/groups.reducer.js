@@ -2,6 +2,7 @@ import * as types from '../actionTypes';
 import { uuid } from '../../utils/dataUtils';
 const initState = {
     groupData: [],
+    groups: []
 
 };
 
@@ -24,6 +25,12 @@ const reducer = (state = initState, action) => {
             return { ...state, groupData: newGroupData };
         }
         case types.GROUPS_SETTING_DROP: {
+            return { ...state, ...action.payload };
+        }
+        case types.GROUPS_SETTING_REMOVE: {
+            return { ...state, ...action.payload };
+        }
+        case types.GROUPS_SETTING_DELETE_GROUP: {
             return { ...state, ...action.payload };
         }
         default:

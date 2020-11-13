@@ -13,8 +13,8 @@ const LiveVideo = () => {
     const { userId } = loginInfo;
     const dispatch = useDispatch();
     useEffect(() => {
-        dispatch(getLiveView(userId, 4));
-    }, [dispatch, userId]);
+        dispatch(getLiveView(userId, viewType));
+    }, [dispatch, userId, viewType]);
 
 
     const channelBtnsChangeHandler = (btn, label) => {
