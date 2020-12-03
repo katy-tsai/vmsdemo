@@ -1,5 +1,9 @@
 import axios from './axios.mock';
-
+export const getMaps = async () => {
+    const response = await axios.get(`/maps`);
+    
+    return response;
+}
 export const getUsersByUser = async (userId) => {
     const response = await axios.get(`/users?userId=${userId}`);
     return response;

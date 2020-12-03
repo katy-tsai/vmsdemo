@@ -1,39 +1,60 @@
-import React,{useRef} from 'react';
+import React,{useRef,useEffect,useState,useCallback} from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import FileUpload from './FileUpload';
 import {ImgUpload} from '../icons/Icons';
+import {getMapsList} from '../../store/action/maps.action';
 const FloorPlan = () => {
   const canvasRef = useRef(null);
+  const {floorPlanList} = useSelector(state => state.maps);
+  const [currentIndex,setCurrentIndex]=useState(0);
+  const dispatch = useDispatch();
+  const drawImage =useCallback(()=>{
+  
+    if(floorPlanList.length>0){
+      const ctx = canvasRef.current.getContext("2d");
+      const image = new Image();
+      image.onload = function() {
+        const canvas=canvasRef.current;
+        canvas.width = image.width;
+        canvas.height=image.height;
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        ctx.drawImage(image,0,0,canvas.width,canvas.height);
+        canvas.style.width = '100%';
+        
+      }
+      image.src =floorPlanList[currentIndex].img;
+    }
+    
+  },[currentIndex,floorPlanList]);
+  useEffect(()=>{
+     function fetchData() {
+      dispatch(getMapsList());   
+    }
+   fetchData();
+  },[]);
+  useEffect(()=>{
+    drawImage();
+ },[floorPlanList]);
 
   const uploadHandler = (base64url)=>{
-    const ctx = canvasRef.current.getContext("2d");
-    const image = new Image();
-    image.onload = function() {
-      const canvas=canvasRef.current;
+    console.log(base64url);
+    
+    // const ctx = canvasRef.current.getContext("2d");
+    // const image = new Image();
+    // image.onload = function() {
+    //   const canvas=canvasRef.current;
      
-      canvas.width = image.width;
-      canvas.height=image.height;
-      ctx.clearRect(0,0,canvas.width,canvas.height);
-      ctx.drawImage(image,0,0,canvas.width,canvas.height);
-      canvas.style.width = '100%';
+    //   canvas.width = image.width;
+    //   canvas.height=image.height;
+    //   ctx.clearRect(0,0,canvas.width,canvas.height);
+    //   ctx.drawImage(image,0,0,canvas.width,canvas.height);
+    //   canvas.style.width = '100%';
       
-    };
-    image.src =base64url;
+    // };
+    // image.src =base64url;
   }
 
-  const scaleToFill=(img,canvas)=>{
-    // get the scale
-    console.log(canvas);
-    console.log(img);
-    const scale = Math.max(canvas.width / img.width, canvas.height / img.height);
-    console.log('scale',scale);
-    
-    // get the top left position of the image
-    const x = (canvas.width / 2) - (img.width / 2) * scale;
-    const y = (canvas.height / 2) - (img.height / 2) * scale;
-    return [x,y,scale];
-    
-}
-
+ 
   return (
     <div className="floor_plan_div"> 
        <div className="canvas-view">
