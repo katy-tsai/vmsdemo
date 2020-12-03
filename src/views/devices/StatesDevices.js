@@ -3,6 +3,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import View from '../../components/layout/View';
 import { getUserDevices } from '../../store/action/devices.action';
 import { Table, Thead, Column, Trow, Tbody } from '../../components/table/Table';
+const columns = [
+    { Header: '裝置名稱', width: '20%' },
+    { Header: 'UID',  width: '20%' }, 
+    { Header: '資訊',  width: '20%' },
+    { Header: '頻道', width: '20%' },
+    { Header: '成員',  width: '10%' },
+    { Header: '狀態',  width: '10%' },
+];
 
 const StatesDevices = () => {
     const { deviceList } = useSelector(state => state.devices);
@@ -17,26 +25,25 @@ const StatesDevices = () => {
             <div className="table-container">
                 <Table>
                     <Thead>
-                        <Column>裝置名稱</Column>
-                        <Column>UID</Column>
-                        <Column>資訊 </Column>
-                        <Column>頻道 </Column>
-                        <Column>成員 </Column>
-                        <Column>狀態 </Column>
+                        {
+                            columns.map((col,index)=>{
+                                return <Column key={`th_${index}`} width={col.width}>{col.Header}</Column>
+                            })
+                        }
                     </Thead>
                     <Tbody>
                         {
                             deviceList.map((device) => {
                                 return (
                                     <Trow key={`tr_${device.udid}`}>
-                                        <Column>{device.displayName}</Column>
-                                        <Column>{device.udid}</Column>
-                                        <Column>
+                                        <Column width={columns[0].width}>{device.displayName}</Column>
+                                        <Column width={columns[1].width}>{device.udid}</Column>
+                                        <Column width={columns[2].width}>
                                             <p>總容量 : {device.totalSpace}<br />
                                             剩餘 : {device.freeSpace}<br />
                                             MAC位址 : {device.mac}</p>
                                         </Column>
-                                        <Column>
+                                        <Column width={columns[3].width}>
                                             {
                                                 device.channels.map((channel) => {
                                                     const height = 100 / channel.length;
@@ -48,7 +55,7 @@ const StatesDevices = () => {
                                                 })
                                             }
                                         </Column>
-                                        <Column>
+                                        <Column width={columns[4].width}>
                                             {
                                                 device.channels.map((channel) => {
                                                     const height = 100 / channel.length;
@@ -61,7 +68,7 @@ const StatesDevices = () => {
                                             }
 
                                         </Column>
-                                        <Column>
+                                        <Column width={columns[5].width}>
                                             {
                                                 device.channels.map((channel, index) => {
                                                     const height = { height: `'${100 / channel.length}%'` };

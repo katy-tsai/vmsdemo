@@ -1,17 +1,21 @@
 import React from 'react';
 import Header from './Header';
 import Sidebar from '../sidebar/Sidebar';
-const Layout = (props) => {
+import useRWD from '../../hooks/useRWD';
+const Layout = ({loginUser,children}) => {
+    const [isSidebarOpen,setIsSidebarOpen]=useRWD();
+    
+    const toggleClickHandler = ()=>{
+        setIsSidebarOpen(!isSidebarOpen);
+    }
+
     return (
-        <div className="wrapper">
-            <div className="left-container">
-               <Sidebar />
-            </div>           
-            <div className="main-container">
-                
-                <div className="main">
-                <Header />
-                    {props.children}
+        <div className={["wrapper",isSidebarOpen?"show":"close"].join(" ")}> 
+        <Header toggleClick={toggleClickHandler} />           
+            <div className="main-container">                       
+                <div className="main">        
+                <Sidebar user={loginUser}/>
+                {children}
                 </div>
             </div>
         </div>

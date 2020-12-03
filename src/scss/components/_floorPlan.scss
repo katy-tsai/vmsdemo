@@ -1,0 +1,14 @@
+.floor_plan_div{
+  box-sizing: border-box;
+  display: flex;
+  padding: 10px;
+  width: 100%;
+  flex-direction: column;
+  .canvas-view{
+    width: 100%;
+    background-color: #fff;
+    min-height: 450px;
+    margin: 10px auto;
+    
+  }
+}

@@ -1,12 +1,31 @@
 .header{
     height:$header-height;
     background-color: $header-backgroud-color;
-    width: calc(100% - #{$sidebar-width});
+    //width: calc(100% - #{$sidebar-width});
+    width:100%;
     display: flex;
     position: fixed;
     top: 0;
     align-items: center;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2);
     z-index: 200;
-   
+    .header-searchbar{
+        width: calc(100% - #{$sidebar-width+10px});
+    }
+    .header-logo{
+        width: $sidebar-width;
+        display: flex;
+        flex-direction: row;
+        color:#ddd;
+        justify-content: center;
+        i{
+            img{
+                width: 120px;
+                margin: 0;
+                height: inherit !important;
+            }
+        }
+    }
+    
+    
 }

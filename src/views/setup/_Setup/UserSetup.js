@@ -18,7 +18,7 @@ const UserSetup = () => {
 
     useEffect(() => {
 
-    }, [loginInfo, subUsers]);
+    }, [userInfo]);
     const addSubUserHandler = () => {
         dispatch(addSubUser());
     }
@@ -47,7 +47,10 @@ const UserSetup = () => {
 
         dispatch(saveUser(user));
     }
+    console.log(loginInfo);
+    
     return (
+
         <>
             <UserForm data={loginInfo} isSub={false} addSubUser={addSubUserHandler} saveUser={saveUserHandler} />
             {

@@ -4,7 +4,7 @@ const initState = {
     loginInfo: {
         "id": 1,
         "userId": "A402C9BD97C74BD530",
-        "userName": "mainclient",
+        "userName": "tutkadmin@tutk.com",
         "displayName": "TUTK 管理者",
         "cellphone": {
             "areaCode": "+886",

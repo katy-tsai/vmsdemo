@@ -1,11 +1,33 @@
 .dnd_div{
     display: flex;
     flex-direction: row;
-    .table-column{
-        padding:0 !important;  
+    table{
+        border-collapse: collapse;
+        border-spacing: 0;
+        width: 100%;
     }
+    table tr td, table tr th{
+        border : 1px solid black;
+      }
 
-    .tr_item_0 {
+    tbody{
+        background-color: #fff;
+        font-size: .9rem;
+    }
+    thead{
+        text-align: center;
+        background-color: $table-header-bgc;
+        color:$table-hdader-color;
+        box-sizing: border-box;
+        th{
+            padding: 5px 0;
+        }
+    }
+    // .table-column{
+    //     padding:0 !important;  
+    // }
+
+    tr>td:nth-child(1) {
       
         span{
             font-size: 1rem;
@@ -21,8 +43,8 @@
         }
     }
     .no-data-text{
-        min-height: 500px;
-        display: flex;
+        height: 300px;
+        // display: flex;
         text-align: center;
         justify-content: center;
         align-items: center;
@@ -67,12 +89,13 @@
         color:#fff;
         padding: 5px 10px !important;
         margin: 5px !important;
-        line-height: 25px !important;
+         line-height: 20px !important;
         border-radius: 5px;
         flex-grow: 0;
-        font-size: .9rem;
+        font-size: .7rem;
         // min-width: 90px;
         position: relative;
+        word-break: break-all;
         span{
             position: absolute;
             top:-13px;
@@ -113,9 +136,6 @@
             cursor: pointer;
         }
     }
-    .tr_item_1,.tr_item_2{
-         flex:2 !important;
-        // width: 50%;
-    }
+    
     
 }

@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import LogIcon from '../../scss/img/logo.png';
+
 import MenuItems from './MenuItems';
 import NavigationItem from './NavigationItem';
 import MenuItemLabel from './MenuItemLabel';
 import { ChartIcon, VideoIcon, DriveIcon, SetupIcon, BellIcon } from '../icons/Icons';
-
+import Avatar from '../../components/avatar/Avatar';
 const Sidebar = (props) => {
     const [toggelMenu, setToogelMeue] = useState({ dashboard: false, video: false, devices: false });
 
@@ -14,8 +14,8 @@ const Sidebar = (props) => {
     }
 
     return (
-        <div className="sidbar_div">
-            <img src={LogIcon} alt="tutk" />
+        <div className={["sidbar_div",props.className].join(" ")}>
+            <Avatar user={props.user}/>
             <MenuItems>
                 <MenuItemLabel toggleClick={() => toggleClick('dashboard')}><ChartIcon />Dashboard儀表板</MenuItemLabel>
                 <MenuItems show={toggelMenu.dashboard} >

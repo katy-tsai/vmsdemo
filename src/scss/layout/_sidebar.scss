@@ -6,12 +6,10 @@
     left: 0;
     background:$sidebar-backgroud-color;
     z-index: 100;
-    transition: all 0.3s ease;
+    transition: all 0.4s ease;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    img{
-        width: 180px;
-        margin: 10px 20px;
-    }
+    margin-top: $header-height;
+  
     svg{
         padding:0 10px;
     }
@@ -69,3 +67,4 @@
         display: none;
     }
 }
+

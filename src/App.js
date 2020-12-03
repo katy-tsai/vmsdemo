@@ -1,7 +1,7 @@
 import React from 'react';
 import Layout from './components/layout/Layout';
 import { Route, Switch } from 'react-router-dom';
-import { Provider } from 'react-redux';
+import { useSelector } from 'react-redux';
 import LoginDashboard from './views/dashboard/LoginDashboard';
 import EventDashboard from './views/dashboard/EventDashboard';
 import DeviceDashboard from './views/dashboard/DeviceDashboard';
@@ -12,13 +12,12 @@ import GroupDevices from './views/devices/GroupDevices';
 import MapDevices from './views/devices/MapDevices';
 import EventSetting from './views/event/EventSetting';
 import Setup from './views/setup/Setup';
-import storeconfig from './store';
-const store = storeconfig();
+
 
 function App() {
-  return (
-    <Provider store={store}>
-      <Layout>
+  const { loginInfo } = useSelector(state => state.user);
+  return ( 
+      <Layout loginUser={loginInfo}>
         <Switch>
           <Route path="/" exact component={LoginDashboard} />
           <Route path="/dashboard/login" component={LoginDashboard} />
@@ -33,7 +32,6 @@ function App() {
           <Route path="/setup" component={Setup} />
         </Switch>
       </Layout>
-    </Provider>
   );
 }
 

@@ -1,14 +1,14 @@
 $table-header-bgc:#049be5;
 $table-hdader-color:#fff;
 
-.table-container{
-    margin: 10px;
-}
+// .table-container{
+//     // margin: 10px;
+// }
 .table-div{
     display: flex;
     flex-direction: column;
     width: 100%;
-    
+    min-width: 750px;
     .table-row{
         list-style-type: none;
         margin: 0;
@@ -20,6 +20,7 @@ $table-hdader-color:#fff;
         
         .table-column{
             border: 1px solid #7b7575;
+            box-sizing: border-box;
             flex:1;
             display: flex;
             flex-direction: column;
@@ -49,7 +50,7 @@ $table-hdader-color:#fff;
         background-color: $table-header-bgc;
         color:$table-hdader-color;
         .table-column{
-            padding: 5px;
+             padding: 5px;
         }
     }
 }

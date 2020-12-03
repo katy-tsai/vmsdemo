@@ -9,8 +9,8 @@ import { getGroups, addGroup, dropGroupData, removeGroupItem, deletGroup } from 
 import { getChannelList } from '../../store/action/channels.action';
 import { getUsers } from '../../store//action/users.action';
 import { isExist } from '../../utils/dataUtils';
-const columns = [{ Header: '群組名稱', accessor: 'groupName', width: '20%' },
-{ Header: '可讀取帳號', accessor: 'accounts', width: '40%' }, { Header: '頻道名稱', accessor: 'channels', width: '40%' }];
+const columns = [{ Header: '群組名稱', accessor: 'groupName', width: '25%' },
+{ Header: '可讀取帳號', accessor: 'accounts', width: '45%' }, { Header: '頻道名稱', accessor: 'channels', width: '30%' }];
 
 const GroupDevices = () => {
     const { groupData } = useSelector(state => state.groups);

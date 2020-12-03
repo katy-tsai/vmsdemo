@@ -1,0 +1,54 @@
+.avatar-div{
+  color: #eee;
+   border-bottom: 1px solid #3e3b3b;
+   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 20px;
+  position: relative;
+  .avatar-img{
+    margin: 15px 10px 10px 5px;
+    width: 50px;
+    height: 50px;
+    background: #eee;
+    border-radius: 50%;
+    position: relative;
+    &::after{
+      content: attr(name);
+      font-weight: bold;
+      position: absolute;
+      top:50%;
+      left:50%;
+      color:#fe6c00;
+      font-size: 40px;
+      line-height: 40px;
+      transform: translate(-50%,-45%);
+    }
+  }
+  .avatar-txt{
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    font-size: 0.8rem;
+    word-break: break-all;
+    
+  }
+  .avatar-logout{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 5px;
+    display: inline-flex;
+    flex-direction: row;
+    //color: #a09b98;
+    color: rgba(0,0,0,0.6);
+    text-shadow: 2px 2px 3px rgba(255,255,255,0.1); 
+    cursor: pointer;
+    span{
+      margin-left: -5px;
+    }
+    &:hover{
+      color: #a09b98;
+    }
+  }
+}

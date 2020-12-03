@@ -14,13 +14,14 @@ export const Tbody = ({ children }) => {
         </div>
     );
 };
-export const Thead = ({ children }) => {
+export const Thead = ({ children ,className}) => {
     return (
-        <ul className="table-row table-header">
+        <ul className={["table-row table-header",className].join(" ")}>
             {
                 children.map((child, index) => {
+                    const style =child.props.width? {flex:`0 0 ${child.props.width}`}:{flex:`1`};
                     return (
-                        <li className={["table-column", `tr_item_${index}`, child.props.className].join(" ")} key={`th_${index}`}  {...child.props} >
+                        <li className={["table-column", `tr_item_${index}`, child.props.className].join(" ")} key={`th_${index}`}  style={style}>
                             {child}
                         </li>
                     )
@@ -36,8 +37,9 @@ export const Trow = ({ children }) => {
         <ul className="table-row table-tr">
             {
                 children.map((child, index) => {
+                    const style =child.props.width? {flex:`0 0 ${child.props.width}`}:{flex:`1`};
                     return (
-                        <li className={["table-column", `tr_item_${index}`, child.props.className].join(" ")} key={`th_${index}`} {...child.props} >
+                        <li className={["table-column", `tr_item_${index}`, child.props.className].join(" ")} key={`th_${index}`} style={style} >
                             {child}
                         </li>
                     )

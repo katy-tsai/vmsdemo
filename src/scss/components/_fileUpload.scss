@@ -1,0 +1,15 @@
+.upload-div{
+width: 50px;
+  input[type="file"] {
+    display: none;
+    &+ label { 
+    //  border: 1px solid #333;
+     cursor: pointer;
+     display: block;
+     img{
+       width: 100%;
+     }
+    }
+  }
+}
+
